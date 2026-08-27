@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Asta Batik Solo | Produsen Batik Katun Premium</title>
+    
+    <link rel="icon" href="(Logo).jpg" type="image/jpeg">
+    
+    <meta name="description" content="Asta Batik Solo - Produsen kemeja batik premium asli Solo. Koleksi Classic, Modern, Katun, dan Dobby.">
+    <meta name="keywords" content="asta batik solo, batik solo, kemeja batik premium, batik slim fit, batik dobby">
+    <meta name="author" content="Asta Batik Solo">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
+
+        :root { 
+            --bg-classic: #1c1615; 
+            --card-bg: #241c19;    
+            --dark-brown: #4e3629; 
+            --gold: #D4AF37; 
+            --text-light: #f7f3ed; 
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg-classic); color: var(--text-light); }
+        
+        /* --- MENU NAVIGASI --- */
+        .navbar { position: fixed; top: 0; left: 0; width: 100%; background-color: rgba(28, 22, 21, 0.95); backdrop-filter: blur(8px); padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; z-index: 999; box-shadow: 0 4px 15px rgba(0,0,0,0.5); border-bottom: 1px solid var(--dark-brown); }
+        .nav-logo { height: 40px; cursor: pointer; transition: transform 0.3s ease; border-radius: 4px; }
+        .nav-logo:hover { transform: scale(1.05); }
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a { color: var(--text-light); text-decoration: none; font-size: 0.95rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; cursor: pointer; }
+        .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+        .page-section { display: none; animation: fadeIn 0.5s ease-in-out; }
+        .page-section.active { display: block; }
+
+        /* --- ZONA BERANDA --- */
+        #page-beranda { padding-top: 70px; } 
+        
+        /* --- SLIDER BANNER UTAMA --- */
+        .slider-container { position: relative; width: 100%; height: 90vh; overflow: hidden; background-color: #111; }
+        .slider-track { display: flex; width: 100%; height: 100%; transition: transform 0.6s ease-in-out; }
+        .slide { min-width: 100%; height: 100%; position: relative; background-size: cover; background-position: center top; display: flex; flex-direction: column; }
+        .slide-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(28,22,21,0.9) 0%, rgba(28,22,21,0.2) 60%), linear-gradient(to top, rgba(28,22,21,0.8) 0%, transparent 40%); z-index: 1; pointer-events: none; }
+        
+        .slide-content { position: absolute; bottom: 15%; left: 8%; z-index: 3; max-width: 700px; user-select: none; text-align: left; }
+        .slide-content img { max-width: 160px; margin-bottom: 20px; border-radius: 4px; pointer-events: none; }
+        .slide-content h1 { color: #fff; font-weight: 400; margin-bottom: 10px; font-size: 3.5rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
+        .slide-content p { color: var(--gold); font-size: 1.3rem; margin: 0; font-weight: 500; letter-spacing: 1px; text-shadow: 1px 1px 5px rgba(0,0,0,0.8); }
+        
+        .slider-arrow { position: absolute; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,0.5); font-size: 3rem; cursor: pointer; z-index: 10; padding: 20px; transition: 0.3s; user-select: none; }
+        .slider-arrow:hover { color: var(--gold); }
+        .slider-arrow.prev { left: 20px; }
+        .slider-arrow.next { right: 20px; }
+
+        .slider-dots { position: absolute; bottom: 30px; width: 100%; text-align: center; z-index: 4; }
+        .dot { display: inline-block; width: 10px; height: 10px; margin: 0 5px; background: rgba(255,255,255,0.4); border-radius: 50%; cursor: pointer; transition: 0.3s; }
+        .dot.active { background: var(--gold); box-shadow: 0 0 10px var(--gold); width: 30px; border-radius: 10px; }
+
+        /* --- KOLEKSI ZIG-ZAG --- */
+        .zigzag-wrapper { max-width: 1200px; margin: 80px auto; padding: 0 20px; }
+        .zigzag-row { display: flex; align-items: center; gap: 50px; margin-bottom: 80px; }
+        .zigzag-row.reverse { flex-direction: row-reverse; }
+        
+        .zigzag-slider-container { flex: 1; height: 450px; position: relative; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%); overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); background-color: #2a201d; }
+        .zigzag-row.reverse .zigzag-slider-container { clip-path: polygon(0 0, 90% 0, 100% 100%, 10% 100%); }
+        
+        .zz-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-position: center; background-size: cover; opacity: 0; transition: opacity 1.5s ease-in-out, transform 5s linear; transform: scale(1); }
+        .zz-slide.active { opacity: 1; transform: scale(1.05); z-index: 2; }
+        
+        .zigzag-text { flex: 1; padding: 20px; }
+        .zigzag-text h3 { color: var(--gold); font-size: 2.5rem; margin-bottom: 15px; font-weight: 300; }
+        .zigzag-text p { color: #d0c5bc; font-size: 1.1rem; line-height: 1.7; margin-bottom: 30px; }
+        
+        .btn-group-zz { display: flex; gap: 15px; flex-wrap: wrap; }
+        .btn-outline { display: inline-block; padding: 12px 30px; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; border-radius: 4px; transition: 0.3s; cursor: pointer; background: transparent; text-align: center; }
+        .btn-outline:hover { background: var(--gold); color: var(--bg-classic); }
+
+        /* PENGATURAN GAMBAR BANNER ZIG-ZAG (LAPTOP) */
+        .bg-banner-1 { background-image: url('Banner/baner1.jpg'); }
+        .bg-banner-2 { background-image: url('Banner/baner2.jpg'); }
+        .bg-banner-3 { background-image: url('Banner/baner3.jpg'); }
+        .bg-banner-4 { background-image: url('Banner/baner4.jpg'); }
+        .bg-banner-5 { background-image: url('Banner/baner5.jpg'); }
+        .bg-banner-6 { background-image: url('Banner/baner6.jpg'); }
+
+        @media (max-width: 768px) {
+            /* MENGGANTI KE VERSI HP */
+            .bg-banner-1 { background-image: url('Banner/baner-hp1.jpg'); }
+            .bg-banner-2 { background-image: url('Banner/baner-hp2.jpg'); }
+            .bg-banner-3 { background-image: url('Banner/baner-hp3.jpg'); }
+            .bg-banner-4 { background-image: url('Banner/baner-hp4.jpg'); }
+            .bg-banner-5 { background-image: url('Banner/baner-hp5.jpg'); }
+            .bg-banner-6 { background-image: url('Banner/baner-hp6.jpg'); }
+            
+            .zigzag-row, .zigzag-row.reverse { flex-direction: column; gap: 15px; margin-bottom: 50px; }
+            .zigzag-slider-container { width: 100%; height: 260px; clip-path: none !important; border-radius: 8px; flex: none; }
+            .zigzag-text { text-align: left; padding: 5px; }
+            .zigzag-text h3 { font-size: 1.8rem; margin-bottom: 10px; }
+            .zigzag-text p { font-size: 0.95rem; margin-bottom: 20px; }
+
+            /* --- MENGATUR TOMBOL SEJAJAR KIRI-KANAN DI HP --- */
+            .btn-group-zz { flex-wrap: nowrap; gap: 10px; width: 100%; }
+            .btn-group-zz .btn-outline { flex: 1; padding: 12px 5px; font-size: 0.8rem; letter-spacing: 0px; white-space: nowrap; display: flex; align-items: center; justify-content: center; }
+            .zigzag-text > .btn-outline { width: 100%; }
+        }
+
+        /* --- FILTER TABS DI HALAMAN PRODUK --- */
+        .filter-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; }
+        .filter-btn { background: transparent; border: 1px solid var(--dark-brown); color: var(--text-light); padding: 8px 20px; border-radius: 30px; cursor: pointer; transition: 0.3s; font-size: 0.95rem; }
+        .filter-btn:hover, .filter-btn.active { background: var(--gold); color: var(--bg-classic); border-color: var(--gold); font-weight: bold; }
+
+        /* --- DAFTAR PRODUK --- */
+        .container { max-width: 1200px; margin: 40px auto; padding: 20px; }
+        .section-title { text-align: center; color: var(--gold); font-size: 2rem; font-weight: 400; letter-spacing: 2px; margin-bottom: 50px; text-transform: uppercase; }
+        
+        .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
+        .card { background-color: var(--card-bg); border: 1px solid var(--dark-brown); border-radius: 8px; overflow: hidden; text-align: center; transition: all 0.4s ease; cursor: pointer; position: relative; box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
+        .card:hover { transform: translateY(-5px); border-color: var(--gold); }
+        
+        .image-container { position: relative; width: 100%; aspect-ratio: 1 / 1; background-color: #1a1412; overflow: hidden; }
+        .card img.thumb { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .card:hover img.thumb { transform: scale(1.05); }
+
+        .card-body { padding: 15px 10px; }
+        .card-title { font-size: 1rem; margin: 0 0 8px 0; color: var(--gold); font-weight: 500; line-height: 1.4; }
+        .price-strike { text-decoration: line-through; color: #888; font-size: 0.85rem; margin-bottom: 2px; }
+        .price-final { font-size: 1.15rem; font-weight: bold; color: #fff; }
+        .badge { background-color: #821b1b; color: white; padding: 4px 10px; font-size: 0.75rem; font-weight: bold; position: absolute; top: 10px; left: 10px; border-radius: 3px; z-index: 3; }
+
+        .btn-lihat-semua { display: block; width: 250px; margin: 50px auto 0; padding: 15px; text-align: center; background: transparent; border: 2px solid var(--gold); color: var(--gold); font-size: 1rem; font-weight: bold; border-radius: 6px; cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+        .btn-lihat-semua:hover { background: var(--gold); color: var(--bg-classic); }
+
+        /* --- ZONA TENTANG KAMI & FOOTER --- */
+        .about-section { max-width: 800px; margin: 0 auto; padding: 40px 20px; text-align: center; }
+        .about-section p { font-size: 1.1rem; line-height: 1.8; color: #d0c5bc; margin-bottom: 20px; }
+        .features { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; padding: 40px 20px; border-top: 1px dashed var(--dark-brown); border-bottom: 1px dashed var(--dark-brown); margin-top: 40px; }
+        .feature-box { text-align: center; max-width: 180px; }
+        .feature-box i { font-size: 2.5rem; color: var(--gold); margin-bottom: 15px; }
+        .feature-box h4 { color: var(--gold); margin: 0 0 10px 0; font-size: 1.1rem; }
+        .feature-box p { font-size: 0.9rem; color: #d0c5bc; margin: 0; }
+
+        .float-wa { position: fixed; width: 60px; height: 60px; bottom: 90px; right: 30px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 0px 4px 15px rgba(0,0,0,0.5); z-index: 100; transition: transform 0.3s; display: flex; align-items: center; justify-content: center; text-decoration: none; }
+        .float-wa:hover { transform: scale(1.1); background-color: #20b858; }
+
+        /* Modal Popup */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(15, 12, 11, 0.95); backdrop-filter: blur(5px); }
+        .modal-content { background-color: var(--bg-classic); margin: 3% auto; padding: 30px; border: 1px solid var(--gold); border-radius: 10px; width: 85%; max-width: 1100px; display: flex; flex-wrap: wrap; gap: 40px; position: relative; box-shadow: 0 0 50px rgba(212, 175, 55, 0.1); }
+        .close { color: var(--gold); position: absolute; right: 25px; top: 15px; font-size: 35px; font-weight: bold; cursor: pointer; transition: 0.3s; z-index: 10; }
+        .close:hover { color: #fff; transform: rotate(90deg); }
+        
+        .gallery { flex: 1; min-width: 300px; }
+        .main-img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border: 1px solid var(--dark-brown); border-radius: 8px; margin-bottom: 15px; background-color: #1a1412; cursor: zoom-in; }
+        .thumbnails { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; }
+        .thumbnails img { width: 60px; height: 80px; object-fit: cover; cursor: pointer; border: 2px solid transparent; border-radius: 5px; transition: 0.3s; background-color: #1a1412; }
+        .thumbnails img.active { border-color: var(--gold); }
+        
+        .lightbox, .static-lightbox { display: none; position: fixed; z-index: 3000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(15, 12, 11, 0.95); justify-content: center; align-items: center; }
+        .lightbox img, .static-lightbox img { max-width: 90%; max-height: 90vh; border-radius: 5px; }
+        .static-lightbox img { border: 2px solid var(--gold); }
+        .lightbox-close, .static-lightbox-close { position: absolute; top: 20px; right: 30px; color: var(--gold); font-size: 40px; font-weight: bold; cursor: pointer; z-index: 3010; }
+        .lightbox-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(28, 22, 21, 0.8); color: var(--gold); border: 1px solid var(--gold); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; cursor: pointer; transition: 0.3s; z-index: 3010; }
+        .lightbox-arrow:hover { background: var(--gold); color: var(--bg-classic); }
+        .lightbox-prev { left: 30px; }
+        .lightbox-next { right: 30px; }
+
+        .details { flex: 1; min-width: 300px; display: flex; flex-direction: column; }
+        .details-header { display: flex; justify-content: space-between; align-items: flex-start; margin-top: 15px; padding-right: 35px; }
+        .details h2 { color: var(--gold); margin-top: 0; font-size: 2rem; font-weight: 300; }
+        .btn-share { background: transparent; border: 1px solid var(--gold); color: var(--gold); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s; font-size: 1rem; }
+        .btn-share:hover { background: var(--gold); color: var(--bg-classic); }
+
+        .stock-status { display: inline-block; background-color: rgba(37, 211, 102, 0.15); color: #25d366; border: 1px solid #25d366; padding: 4px 10px; font-size: 0.8rem; border-radius: 4px; font-weight: bold; margin-bottom: 10px; }
+        
+        .btn-group { display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0 20px 0; }
+        .btn-var { background: transparent; border: 1px solid #555; color: var(--text-light); padding: 4px 12px 4px 4px; cursor: pointer; border-radius: 6px; transition: 0.3s; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
+        .btn-var img { width: 35px; height: 35px; object-fit: cover; border-radius: 4px; }
+        .btn-var.active { border: 2px solid var(--gold); background: rgba(212, 175, 55, 0.1); padding: 3px 11px 3px 3px; color: var(--gold); font-weight: bold; }
+
+        .btn-size { background: transparent; border: 1px solid #555; color: var(--text-light); padding: 10px 15px; cursor: pointer; border-radius: 5px; transition: 0.3s; font-weight: bold; min-width: 50px; }
+        .btn-size.active { border: 2px solid var(--gold); background: rgba(212, 175, 55, 0.1); color: var(--gold); padding: 9px 14px; }
+        
+        .specs { font-size: 0.95rem; line-height: 1.8; margin-bottom: 30px; background: rgba(62, 39, 35, 0.25); padding: 20px; border-radius: 8px; border-left: 3px solid var(--gold); }
+        .specs ul { padding-left: 20px; margin-top: 10px; }
+        
+        .action-btns { display: flex; gap: 15px; margin-top: auto; padding-top: 20px; }
+        .btn-wa { background-color: #25D366; color: white; padding: 15px 20px; text-decoration: none; font-weight: bold; border-radius: 6px; flex: 1; text-align: center; transition: 0.3s; font-size: 1rem; }
+        .btn-cart { background-color: var(--gold); color: var(--bg-classic); padding: 15px 20px; font-weight: bold; border-radius: 6px; flex: 1; text-align: center; transition: 0.3s; border: none; cursor: pointer; font-size: 1rem; }
+        
+        footer { background-color: #120d0c; padding: 40px 20px; text-align: center; border-top: 1px solid var(--dark-brown); }
+        .social-links a { color: var(--gold); font-size: 28px; margin: 0 15px; text-decoration: none; transition: 0.3s; }
+
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        @media (max-width: 768px) {
+            .navbar { padding: 10px 20px; }
+            .nav-logo { height: 35px; } 
+            .nav-links { gap: 15px; }
+            .nav-links a { font-size: 0.8rem; }
+            
+            #page-beranda, #page-produk, #page-tentang { padding-top: 65px; }
+            .slider-container { height: 65vh; }
+            .slider-arrow { display: none; } 
+            .slide-overlay { background: linear-gradient(to top, rgba(28,22,21,0.95) 0%, rgba(28,22,21,0.3) 100%); }
+            .slide-content { bottom: 10%; left: 5%; right: 5%; max-width: 90%; text-align: left; }
+            .slide-content img { max-width: 120px; margin-bottom: 10px; }
+            .slide-content h1 { font-size: 2rem; margin-bottom: 5px; }
+            .slide-content p { font-size: 0.95rem; }
+            
+            .grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .card-body { padding: 10px 5px; }
+            .card-title { font-size: 0.85rem; margin-bottom: 2px; }
+            .price-strike { font-size: 0.7rem; }
+            .price-final { font-size: 1rem; }
+            .badge { font-size: 0.65rem; padding: 4px 8px; top: 8px; left: 8px; }
+            
+            .modal-content { width: 95%; padding: 15px; gap: 15px; margin: 5% auto; }
+            .close { top: 5px; right: 15px; font-size: 28px; }
+            .details h2 { font-size: 1.5rem; }
+            .action-btns { flex-direction: column; }
+            .float-wa { bottom: 90px; right: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <img src="(Logo).jpg" alt="Asta Batik Solo" class="nav-logo" onclick="bukaHalaman('page-beranda')" title="Beranda">
+    <div class="nav-links">
+        <a id="nav-beranda" class="active" onclick="bukaHalaman('page-beranda')">Beranda</a>
+        <a id="nav-produk" onclick="bukaHalaman('page-produk')">Produk</a>
+        <a id="nav-tentang" onclick="bukaHalaman('page-tentang')">Tentang Kami</a>
+    </div>
+</nav>
+
+<!-- ========================================== -->
+<!-- HALAMAN 1: BERANDA -->
+<!-- ========================================== -->
+<div id="page-beranda" class="page-section active">
+    
+    <!-- SLIDER UTAMA -->
+    <div class="slider-container" id="heroSlider">
+        <div class="slider-track" id="sliderTrack">
+            <div class="slide" style="background-image: url('bg-hero.jpg');">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <img src="(Logo).jpg" alt="Asta Batik">
+                    <h1>Eksklusivitas Katun Premium</h1>
+                    <p>Koleksi batik asli Solo dengan detail furing errow yang dijahit presisi.</p>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('bg-hero.jpg');">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h1>Koleksi Slim-Fit Terbaru</h1>
+                    <p>Tampil elegan dan profesional di setiap kesempatan penting Anda.</p>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('bg-hero.jpg');">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h1>Promo Terbatas Hari Ini</h1>
+                    <p>Dapatkan diskon hingga 52% untuk pemesanan via website resmi.</p>
+                </div>
+            </div>
+        </div>
+        
+        <span class="slider-arrow prev" onclick="moveSlide(-1)">&#10094;</span>
+        <span class="slider-arrow next" onclick="moveSlide(1)">&#10095;</span>
+
+        <div class="slider-dots">
+            <span class="dot active" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+    </div>
+
+    <!-- KOLEKSI ZIG-ZAG -->
+    <div class="zigzag-wrapper">
+        <div class="zigzag-row fade-in-up">
+            <div class="zigzag-slider-container">
+                <div class="zz-slide promo-slide bg-banner-1 active"></div>
+                <div class="zz-slide promo-slide bg-banner-2"></div>
+            </div>
+            <div class="zigzag-text">
+                <h3>Spesial Promo Bulan Ini</h3>
+                <p>Nikmati penawaran eksklusif untuk koleksi kemeja batik premium kami. Dapatkan potongan harga hingga 52% untuk setiap pembelian melalui website resmi Asta Batik Solo. Kesempatan terbatas!</p>
+                <button class="btn-outline" onclick="bukaHalaman('page-produk')">Lihat Koleksi Diskon</button>
+            </div>
+        </div>
+        
+        <div class="zigzag-row reverse fade-in-up">
+            <div class="zigzag-slider-container">
+                <div class="zz-slide style-slide bg-banner-3 active"></div>
+                <div class="zz-slide style-slide bg-banner-4"></div>
+            </div>
+            <div class="zigzag-text">
+                <h3>Asta Batik Heritage & Modern</h3>
+                <p>Pilih gaya yang sesuai dengan karaktermu. Temukan wibawa dalam balutan motif <b>Classic</b> yang sarat akan makna, atau tampil segar dengan sentuhan dinamis dari <b>Modern Collection</b>.</p>
+                <div class="btn-group-zz">
+                    <button class="btn-outline" onclick="filterProduk('classic')">Koleksi Classic</button>
+                    <button class="btn-outline" onclick="filterProduk('modern')">Koleksi Modern</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="zigzag-row fade-in-up">
+            <div class="zigzag-slider-container">
+                <div class="zz-slide mat-slide bg-banner-5 active"></div>
+                <div class="zz-slide mat-slide bg-banner-6"></div>
+            </div>
+            <div class="zigzag-text">
+                <h3>Potongan Slimfit Modern</h3>
+                <p>Jelajahi etalase <b>Katun Premium Collection</b> andalan kami untuk kenyamanan maksimal, dan persiapkan diri Anda untuk mahakarya eksklusif dari <b>Katun Dobby Collection</b> yang akan segera kami luncurkan.</p>
+                <div class="btn-group-zz">
+                    <button class="btn-outline" onclick="filterProduk('katun')">Katun Premium</button>
+                    <button class="btn-outline" onclick="filterProduk('dobby')">Katun Dobby</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRODUK PILIHAN -->
+    <div class="container">
+        <h2 class="section-title fade-in-up">Produk Pilihan</h2>
+        <div class="grid">
+            <div class="card fade-in-up" onclick="openModal('Hastana Hijau')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Hastana Hijau/mockup.jpg" class="thumb" alt="Hastana Hijau"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Hastana Hijau</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card fade-in-up" onclick="openModal('Kawung Prabu')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Kawung Prabu/mockup.jpg" class="thumb" alt="Kawung Prabu"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Kawung Prabu</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card fade-in-up" onclick="openModal('Kidang Kencana')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Kidang Kencana/mockup.jpg" class="thumb" alt="Kidang Kencana"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Kidang Kencana</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card fade-in-up" onclick="openModal('Padma Merah')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Padma Merah/mockup.jpg" class="thumb" alt="Padma Merah"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Padma Merah</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+        </div>
+        <button class="btn-lihat-semua fade-in-up" onclick="bukaHalaman('page-produk')">Lihat Semua Koleksi</button>
+    </div>
+</div>
+
+<!-- ========================================== -->
+<!-- HALAMAN 2: SEMUA PRODUK -->
+<!-- ========================================== -->
+<div id="page-produk" class="page-section">
+    <div class="container" style="margin-top: 40px;">
+        <h2 class="section-title">Semua Koleksi</h2>
+        
+        <div class="filter-tabs">
+            <button class="filter-btn active" onclick="aplikasiFilter('semua', this)">Semua Koleksi</button>
+            <button class="filter-btn" onclick="aplikasiFilter('classic', this)">Classic</button>
+            <button class="filter-btn" onclick="aplikasiFilter('modern', this)">Modern</button>
+            <button class="filter-btn" onclick="aplikasiFilter('katun', this)">Katun Premium</button>
+            <button class="filter-btn" onclick="aplikasiFilter('dobby', this)">Katun Dobby</button>
+        </div>
+
+        <div class="grid" id="produkGrid">
+            <!-- PRODUK CLASSIC -->
+            <div class="card item-produk katun classic" onclick="openModal('Kawung Prabu')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Kawung Prabu/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Kawung Prabu</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun classic" onclick="openModal('Gurda Segara')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Gurda Segara/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Gurda Segara</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun classic" onclick="openModal('Parang Kusumo')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Parang Kusumo/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Parang Kusumo</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun classic" onclick="openModal('Purbangkara')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Purbangkara/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Purbangkara</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            
+            <div class="card item-produk katun classic" onclick="openModal('Sido luhur')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Sido luhur/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Sido luhur</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun classic" onclick="openModal('Lar Kencana')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Lar Kencana/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Lar Kencana</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun classic" onclick="openModal('Babon angkrem')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Babon angkrem/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Babon angkrem</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun classic" onclick="openModal('Truntum lar')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Truntum lar/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Truntum lar</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun classic" onclick="openModal('Kawung Mayura')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Kawung Mayura/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Kawung Mayura</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun classic" onclick="openModal('Kawung Peksi Navy')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Kawung Peksi Navy/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Kawung Peksi Navy</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun classic" onclick="openModal('Kawung Peksi Coklat')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Kawung Peksi Coklat/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Kawung Peksi Coklat</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun classic" onclick="openModal('Parang Merak')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Parang Merak/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Parang Merak</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun classic" onclick="openModal('Jaladara')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Jaladara/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Jaladara</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            
+            <!-- Perhatikan parameter angka 3 dan 5 di belakang namanya untuk batas jumlah foto -->
+            <div class="card item-produk katun classic" onclick="openModal('Sekar Jagad', 3)"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Sekar Jagad/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Sekar Jagad</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun classic" onclick="openModal('Merak Kasmaran', 5)"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Merak Kasmaran/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Merak Kasmaran</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+
+            <!-- PRODUK MODERN -->
+            <div class="card item-produk katun modern" onclick="openModal('Nitik Coklat')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Nitik Coklat/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Nitik Coklat</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Hastana Hijau')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Hastana Hijau/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Hastana Hijau</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Kidang Kencana')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Kidang Kencana/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Kidang Kencana</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Padma Merah')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Padma Merah/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Padma Merah</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Rintik Biru')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Rintik Biru/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Rintik Biru</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Mayura Arimbi')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Mayura Arimbi/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Mayura Arimbi</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+
+            <div class="card item-produk katun modern" onclick="openModal('Teratai Tribuwana')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Teratai Tribuwana/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Teratai Tribuwana</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Mayura gurda')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Mayura gurda/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Mayura gurda</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Mahesa')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Mahesa/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Mahesa</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Sekar Lilac')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Sekar Lilac/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Sekar Lilac</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Karang Abstrak')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Karang Abstrak/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Karang Abstrak</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Bimasena Hitam')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Bimasena Hitam/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Bimasena Hitam</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Teratai Lotus')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Teratai Lotus/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Teratai Lotus</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Sandi Coklat')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Sandi Coklat/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Sandi Coklat</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Arimbi')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Arimbi/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Arimbi</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Pagoda')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Pagoda/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Pagoda</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Janaka Hijau')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Janaka Hijau/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Janaka Hijau</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Mahaprabu Coklat')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Mahaprabu Coklat/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Mahaprabu Coklat</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Kala Agni')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Kala Agni/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Kala Agni</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Brahma Terakota')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Brahma Terakota/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Brahma Terakota</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Aswara')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Aswara/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Aswara</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Candranala')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Candranala/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Candranala</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Wana hijau')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Wana hijau/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Wana hijau</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Ananta')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Ananta/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Ananta</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Arimbi Coklat')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Arimbi Coklat/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Arimbi Coklat</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Swastika Hitam')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Swastika Hitam/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Swastika Hitam</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Aruna Tosca')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Aruna Tosca/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Aruna Tosca</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Aksara Hitam')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Aksara Hitam/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Aksara Hitam</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Kusuma')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Kusuma/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Kusuma</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Wijaya')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Wijaya/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Wijaya</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Pradipta')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Pradipta/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Pradipta</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+
+            <!-- PLACEHOLDER DOBBY -->
+            <div class="card item-produk dobby" onclick="alert('Koleksi Dobby sedang dalam tahap produksi. Nantikan kehadirannya segera!')" style="border: 1px dashed var(--gold);">
+                <div class="image-container" style="background: #111; display:flex; align-items:center; justify-content:center;">
+                    <i class="fas fa-hourglass-half" style="font-size: 3rem; color: var(--gold);"></i>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title" style="color:#d0c5bc;">Exclusive Dobby Collection</h3>
+                    <div class="price-final" style="color:var(--gold); font-size:0.9rem;">COMING SOON</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ========================================== -->
+<!-- HALAMAN 3: TENTANG KAMI -->
+<!-- ========================================== -->
+<div id="page-tentang" class="page-section">
+    <div class="about-section" style="margin-top: 40px;">
+        <h2 class="section-title fade-in-up">Kisah Kami</h2>
+        <p class="fade-in-up">Asta Batik Solo lahir dari kecintaan mendalam terhadap warisan budaya nusantara. Kami berkomitmen untuk menghadirkan kemeja batik berkualitas premium yang memadukan keindahan motif klasik dengan gaya potongan modern.</p>
+        <p class="fade-in-up">Setiap helai kain adalah Katun Premium asli Solo, dilapisi dengan furing errow untuk memberikan kenyamanan maksimal. Dikerjakan oleh penjahit berpengalaman dengan standar Quality Control yang ketat.</p>
+    </div>
+
+    <div class="features">
+        <div class="feature-box fade-in-up"><i class="fas fa-gem"></i><h4>Katun Premium</h4><p>Bahan asli Solo yang halus</p></div>
+        <div class="feature-box fade-in-up"><i class="fas fa-cut"></i><h4>Furing Errow</h4><p>Nyaman & menyerap keringat</p></div>
+        <div class="feature-box fade-in-up"><i class="fas fa-shield-alt"></i><h4>Garansi 100%</h4><p>Jaminan kualitas jahitan</p></div>
+        <div class="feature-box fade-in-up"><i class="fas fa-user-tie"></i><h4>Slim-Fit</h4><p>Potongan elegan pas badan</p></div>
+    </div>
+
+    <div class="container testimonials">
+        <h2 class="section-title fade-in-up" style="margin-bottom: 30px;">Ulasan Pelanggan</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card fade-in-up">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"Batiknya bener-bener halus, bahan katun primanya adem dipakai seharian. Lapisan furing errow-nya rapi banget."</p>
+                <div class="testimonial-author">— Dimas A., Jakarta</div>
+            </div>
+            <div class="testimonial-card fade-in-up">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"Sering beli batik online baru kali ini pas di badan tanpa perlu rombak lagi. Model slim-fit nya kelihatan mewah."</p>
+                <div class="testimonial-author">— Bayu S., Surabaya</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="https://wa.me/6287866301096" target="_blank" class="float-wa"><i class="fab fa-whatsapp"></i></a>
+
+<footer>
+    <img src="(Logo).jpg" alt="Logo Footer" style="width: 120px; margin-bottom: 20px; opacity: 0.8; border-radius: 4px;">
+    <div class="social-links">
+        <a href="https://instagram.com/astabatiksolo_" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://tiktok.com/@astabatik1" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://shopee.co.id/astabatiksolo" target="_blank"><i class="fas fa-shopping-bag"></i></a>
+    </div>
+    <p style="color: #8c7b70; font-size: 0.9rem; margin-top: 20px; letter-spacing: 1px;">&copy; 2026 ASTA BATIK SOLO. EXCLUSIVE HERITAGE.</p>
+</footer>
+
+<!-- MODAL DETAIL PRODUK -->
+<div id="productModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="gallery">
+            <img id="mainImage" src="" class="main-img" alt="Foto Baju" onclick="openLightbox(document.getElementById('mainImage').src)">
+            <div class="thumbnails" id="thumbContainer"></div>
+        </div>
+        <div class="details">
+            <div class="details-header">
+                <div>
+                    <span class="stock-status"><i class="fas fa-check-circle"></i> Ready Stock (Siap Kirim)</span>
+                    <h2 id="modalTitle">Nama Produk</h2>
+                </div>
+                <button class="btn-share" onclick="shareProduct()" title="Bagikan Produk"><i class="fas fa-share-alt"></i></button>
+            </div>
+            <div class="price-strike">Rp 420.000</div>
+            <div class="price-final" style="font-size: 2.2rem; margin-bottom: 5px;">Rp 201.600</div>
+            
+            <h4 style="color: var(--gold); margin-bottom: 5px; margin-top: 15px;">Pilih Potongan:</h4>
+            <div class="btn-group">
+                <button class="btn-var" onclick="changeVariant('panjang', this)">
+                    <img id="thumbBtnPanjang" src="" alt="Panjang"><span>Lengan Panjang</span>
+                </button>
+                <button class="btn-var" onclick="changeVariant('pendek', this)">
+                    <img id="thumbBtnPendek" src="" alt="Pendek"><span>Lengan Pendek</span>
+                </button>
+            </div>
+
+            <h4 style="color: var(--gold); margin-bottom: 5px; margin-top: 10px;">Pilih Ukuran (Slim-Fit):</h4>
+            <div class="btn-group">
+                <button class="btn-size" onclick="selectSize('S', this)">S</button>
+                <button class="btn-size" onclick="selectSize('M', this)">M</button>
+                <button class="btn-size" onclick="selectSize('L', this)">L</button>
+                <button class="btn-size" onclick="selectSize('XL', this)">XL</button>
+                <button class="btn-size" onclick="selectSize('XXL', this)">XXL</button>
+            </div>
+            
+            <h4 style="color: var(--gold); margin-bottom: 10px; margin-top: 25px;">Panduan Ukuran (Size Chart):</h4>
+            <div style="display: flex; gap: 15px; margin-bottom: 25px;">
+                <img src="1_2.jpg" style="width: 48%; border: 1px solid var(--gold); border-radius: 5px; cursor: pointer;" alt="Size Chart 1" onclick="openStaticLightbox(this.src)">
+                <img src="2_2.jpg" style="width: 48%; border: 1px solid var(--gold); border-radius: 5px; cursor: pointer;" alt="Size Chart 2" onclick="openStaticLightbox(this.src)">
+            </div>
+            
+            <div class="specs">
+                <strong style="color: var(--gold); font-size: 1.1rem;">Spesifikasi Premium:</strong>
+                <ul>
+                    <li><strong>Kain:</strong> Katun Premium asli Solo yang halus dan berkualitas tinggi.</li>
+                    <li><strong>Lapisan:</strong> Full furing errow, memberikan kenyamanan ekstra.</li>
+                    <li><strong>Warna:</strong> Proses pewarnaan khusus, tajam dan anti-luntur.</li>
+                    <li><strong>Potongan:</strong> Pola Slim-Fit modern.</li>
+                </ul>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <img src="3.jpg" style="width: 100%; max-width: 350px; border-radius: 5px; cursor: pointer;" alt="Garansi" onclick="openStaticLightbox(this.src)">
+            </div>
+            
+            <div class="action-btns">
+                <button class="btn-cart" onclick="addToCart()"><i class="fas fa-shopping-cart"></i> Masukkan Keranjang</button>
+                <a id="waLink" href="#" target="_blank" class="btn-wa"><i class="fab fa-whatsapp"></i> Pesan via WhatsApp</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="lightboxModal" class="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <div class="lightbox-arrow lightbox-prev" onclick="changeLightboxImage(-1)"><i class="fas fa-chevron-left"></i></div>
+    <img id="lightboxImg" src="" alt="Zoom Detail">
+    <div class="lightbox-arrow lightbox-next" onclick="changeLightboxImage(1)"><i class="fas fa-chevron-right"></i></div>
+</div>
+
+<div id="staticLightboxModal" class="static-lightbox" onclick="closeStaticLightbox()">
+    <span class="static-lightbox-close">&times;</span>
+    <img id="staticLightboxImg" src="" alt="Zoom Size Chart">
+</div>
+
+<script>
+    // --- INTEGRASI BROWSER HISTORY API (TOMBOL BACK HP) ---
+    if (!history.state) {
+        history.replaceState({ page: 'page-beranda', isModal: false }, "", "#beranda");
+    }
+
+    window.addEventListener('popstate', function(event) {
+        if (document.getElementById('productModal').style.display === 'block') {
+            document.getElementById('productModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            return;
+        }
+
+        if (event.state && event.state.page) {
+            bukaHalaman(event.state.page, false);
+        } else {
+            bukaHalaman('page-beranda', false);
+        }
+    });
+
+    // --- FUNGSI NAVIGASI ---
+    function bukaHalaman(pageId, addToHistory = true) {
+        document.querySelectorAll('.page-section').forEach(page => { page.classList.remove('active'); });
+        document.getElementById(pageId).classList.add('active');
+        
+        document.querySelectorAll('.nav-links a').forEach(link => { link.classList.remove('active'); });
+        if(pageId === 'page-beranda') document.getElementById('nav-beranda').classList.add('active');
+        if(pageId === 'page-produk') document.getElementById('nav-produk').classList.add('active');
+        if(pageId === 'page-tentang') document.getElementById('nav-tentang').classList.add('active');
+        
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        if (addToHistory) {
+            let hashName = pageId.replace('page-', '');
+            history.pushState({ page: pageId, isModal: false }, "", "#" + hashName);
+        }
+    }
+
+    function filterProduk(kategori) {
+        bukaHalaman('page-produk');
+        let btns = document.querySelectorAll('.filter-btn');
+        btns.forEach(btn => {
+            if(btn.innerText.toLowerCase().includes(kategori.toLowerCase()) || 
+               (kategori === 'dobby' && btn.innerText.toLowerCase().includes('dobby'))) {
+                aplikasiFilter(kategori, btn);
+            }
+        });
+    }
+
+    function aplikasiFilter(kategori, element) {
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        if(element) element.classList.add('active');
+        
+        let cards = document.querySelectorAll('.item-produk');
+        cards.forEach(card => {
+            if(kategori === 'semua' || card.classList.contains(kategori)) {
+                card.style.display = 'block';
+                card.classList.add('fade-in-up');
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    // --- SCRIPT SLIDER UTAMA (HERO) ---
+    let slideIndex = 0;
+    let slideTimer;
+    const track = document.getElementById('sliderTrack');
+    const dots = document.querySelectorAll(".dot");
+    const totalSlides = 3; 
+
+    function updateSlider() {
+        track.style.transform = `translateX(-${slideIndex * 100}%)`;
+        for (let i = 0; i < dots.length; i++) { dots[i].classList.remove('active'); }
+        dots[slideIndex].classList.add('active');
+    }
+
+    function moveSlide(step) {
+        slideIndex += step;
+        if (slideIndex >= totalSlides) slideIndex = 0;
+        if (slideIndex < 0) slideIndex = totalSlides - 1;
+        updateSlider();
+        resetTimer();
+    }
+
+    function currentSlide(n) {
+        slideIndex = n - 1;
+        updateSlider();
+        resetTimer();
+    }
+
+    function resetTimer() {
+        clearInterval(slideTimer);
+        slideTimer = setInterval(() => { moveSlide(1); }, 5000); 
+    }
+
+    resetTimer();
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const sliderContainer = document.getElementById('heroSlider');
+
+    sliderContainer.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+        clearInterval(slideTimer); 
+    }, {passive: true});
+
+    sliderContainer.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 50) moveSlide(1); 
+        if (touchEndX - touchStartX > 50) moveSlide(-1); 
+        resetTimer(); 
+    }, {passive: true});
+
+    // --- SCRIPT SLIDER MINI UNTUK BANNER ZIG-ZAG ---
+    function startMiniSlider(className) {
+        let slides = document.querySelectorAll('.' + className);
+        if(slides.length < 2) return;
+        let idx = 0;
+        setInterval(() => {
+            slides[idx].classList.remove('active');
+            idx = (idx + 1) % slides.length;
+            slides[idx].classList.add('active');
+        }, 4000);
+    }
+    startMiniSlider('promo-slide');
+    startMiniSlider('style-slide');
+    startMiniSlider('mat-slide');
+
+    // --- SCRIPT MODAL & LIGHTBOX PRODUK DENGAN FITUR JUMLAH GAMBAR DINAMIS ---
+    let currentPanjang = ''; let currentPendek = ''; let selectedProduct = ''; let selectedVariant = ''; let selectedSize = ''; let lightboxImages = []; let currentLightboxIndex = 0;
+
+    function openModal(title, imgCount = 6) {
+        let folder = title; let mockupImg = folder + '/mockup.jpg';
+        currentPanjang = folder + '/panjang.jpg'; currentPendek = folder + '/pendek.jpg';
+        
+        document.getElementById('thumbBtnPanjang').src = currentPanjang; 
+        document.getElementById('thumbBtnPendek').src = currentPendek;
+        selectedProduct = title; selectedVariant = ''; selectedSize = '';    
+        
+        document.querySelectorAll('.btn-var').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.btn-size').forEach(btn => btn.classList.remove('active'));
+        
+        document.getElementById('productModal').style.display = 'block'; 
+        document.body.style.overflow = 'hidden';
+        document.getElementById('modalTitle').innerText = title; 
+        document.getElementById('mainImage').src = mockupImg;
+        
+        history.pushState({ page: 'page-produk', isModal: true }, "", "#detail-produk");
+
+        updateWhatsAppLink(); 
+        
+        // Membangun array gambar berdasarkan parameter imgCount
+        lightboxImages = [mockupImg];
+        for(let i=2; i<=imgCount; i++) {
+            lightboxImages.push(folder + '/foto' + i + '.jpg');
+        }
+
+        let thumbHTML = '';
+        for(let i=0; i<imgCount; i++) { 
+            let actClass = i===0 ? 'active' : ''; 
+            thumbHTML += `<img src="${lightboxImages[i]}" class="${actClass}" onclick="setMainImage(this, ${i})">`; 
+        }
+        document.getElementById('thumbContainer').innerHTML = thumbHTML;
+    }
+
+    function closeModal() { 
+        document.getElementById('productModal').style.display = 'none'; 
+        document.body.style.overflow = 'auto'; 
+        history.back(); 
+    }
+
+    function changeVariant(type, element) { let targetImg = type === 'panjang' ? currentPanjang : currentPendek; setMainImageSrc(targetImg); selectedVariant = type === 'panjang' ? 'Lengan Panjang' : 'Lengan Pendek'; document.querySelectorAll('.btn-var').forEach(btn => btn.classList.remove('active')); element.classList.add('active'); updateWhatsAppLink(); }
+    function selectSize(size, element) { selectedSize = size; document.querySelectorAll('.btn-size').forEach(btn => btn.classList.remove('active')); element.classList.add('active'); updateWhatsAppLink(); }
+    function setMainImage(el, index) { currentLightboxIndex = index; document.getElementById('mainImage').src = lightboxImages[index]; document.querySelectorAll('#thumbContainer img').forEach(img => img.classList.remove('active')); if(el) el.classList.add('active'); }
+    function setMainImageSrc(src) { document.getElementById('mainImage').src = src; }
+
+    function openLightbox(src) { if (typeof src === 'number') { currentLightboxIndex = src; document.getElementById('lightboxImg').src = lightboxImages[currentLightboxIndex]; } else { document.getElementById('lightboxImg').src = src; } document.getElementById('lightboxModal').style.display = 'flex'; }
+    function closeLightbox() { document.getElementById('lightboxModal').style.display = 'none'; }
+    function changeLightboxImage(direction) { currentLightboxIndex += direction; if (currentLightboxIndex < 0) { currentLightboxIndex = lightboxImages.length - 1; } else if (currentLightboxIndex >= lightboxImages.length) { currentLightboxIndex = 0; } document.getElementById('lightboxImg').src = lightboxImages[currentLightboxIndex]; }
+    
+    function openStaticLightbox(src) { document.getElementById('staticLightboxImg').src = src; document.getElementById('staticLightboxModal').style.display = 'flex'; }
+    function closeStaticLightbox() { document.getElementById('staticLightboxModal').style.display = 'none'; }
+
+    function shareProduct() { let shareData = { title: selectedProduct + " - Asta Batik Solo", url: window.location.href }; if (navigator.share) { navigator.share(shareData).catch(() => {}); } else if (navigator.clipboard) { navigator.clipboard.writeText(window.location.href).then(() => { alert("Tautan disalin!"); }); } }
+    function updateWhatsAppLink() { let text = "Halo Asta Batik Solo, saya tertarik memesan koleksi: " + selectedProduct; if(selectedVariant !== '') { text += " - " + selectedVariant; } if(selectedSize !== '') { text += " (Ukuran " + selectedSize + " - Stok Ready)"; } document.getElementById('waLink').href = "https://wa.me/6287866301096?text=" + encodeURIComponent(text); }
+    function addToCart() { if (selectedVariant === '' || selectedSize === '') { alert("Pilih Potongan Lengan dan Ukuran dulu ya."); return; } alert("Produk dimasukkan ke keranjang. Silakan checkout via WhatsApp."); }
+
+    // ANIMASI SAAT DI-SCROLL
+    document.addEventListener("DOMContentLoaded", function() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in-up').forEach((el) => { observer.observe(el); });
+    });
+</script>
+
+</body>
+</html>
