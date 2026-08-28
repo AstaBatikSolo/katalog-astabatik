@@ -87,12 +87,13 @@
         .bg-banner-6 { background-image: url('Banner/baner6.jpg'); }
 
         @media (max-width: 768px) {
+            /* MENGGANTI KE VERSI HP */
             .bg-banner-1 { background-image: url('Banner/baner-hp1.jpg'); }
             .bg-banner-2 { background-image: url('Banner/baner-hp2.jpg'); }
             .bg-banner-3 { background-image: url('Banner/baner-hp3.jpg'); }
             .bg-banner-4 { background-image: url('Banner/baner-hp4.jpg'); }
             .bg-banner-5 { background-image: url('Banner/baner-hp5.jpg'); }
-            .bg-banner-6 { background-image: url('Banner/baner-hp6.jpg'); }
+            .bg-banner-6 { background-image: url('Banner/baner6.jpg'); }
             
             .zigzag-row, .zigzag-row.reverse { flex-direction: column; gap: 15px; margin-bottom: 50px; }
             .zigzag-slider-container { width: 100%; height: 260px; clip-path: none !important; border-radius: 8px; flex: none; }
@@ -100,6 +101,7 @@
             .zigzag-text h3 { font-size: 1.8rem; margin-bottom: 10px; }
             .zigzag-text p { font-size: 0.95rem; margin-bottom: 20px; }
 
+            /* --- MENGATUR TOMBOL SEJAJAR KIRI-KANAN DI HP --- */
             .btn-group-zz { flex-wrap: nowrap; gap: 10px; width: 100%; }
             .btn-group-zz .btn-outline { flex: 1; padding: 12px 5px; font-size: 0.8rem; letter-spacing: 0px; white-space: nowrap; display: flex; align-items: center; justify-content: center; }
             .zigzag-text > .btn-outline { width: 100%; }
@@ -356,13 +358,10 @@
             <div class="card item-produk katun classic" onclick="openModal('Parang Kusumo')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Parang Kusumo/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Parang Kusumo</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
             <div class="card item-produk katun classic" onclick="openModal('Purbangkara')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Purbangkara/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Purbangkara</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
             
-            <!-- PERBAIKAN HURUF KAPITAL -->
             <div class="card item-produk katun classic" onclick="openModal('Sido Luhur')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Sido Luhur/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Sido Luhur</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
             <div class="card item-produk katun classic" onclick="openModal('Lar Kencana')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Lar Kencana/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Lar Kencana</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
             <div class="card item-produk katun classic" onclick="openModal('Babon Angkrem')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Babon Angkrem/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Babon Angkrem</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
             <div class="card item-produk katun classic" onclick="openModal('Truntum Lar')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Truntum Lar/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Truntum Lar</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
-            <!-- SELESAI PERBAIKAN -->
-            
             <div class="card item-produk katun classic" onclick="openModal('Kawung Mayura')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Kawung Mayura/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Kawung Mayura</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
             <div class="card item-produk katun classic" onclick="openModal('Kawung Peksi Navy')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Kawung Peksi Navy/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Kawung Peksi Navy</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
             <div class="card item-produk katun classic" onclick="openModal('Kawung Peksi Coklat')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Kawung Peksi Coklat/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Kawung Peksi Coklat</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
@@ -380,7 +379,12 @@
             <div class="card item-produk katun modern" onclick="openModal('Rintik Biru')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Rintik Biru/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Rintik Biru</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
             <div class="card item-produk katun modern" onclick="openModal('Mayura Arimbi')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Mayura Arimbi/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Mayura Arimbi</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
             <div class="card item-produk katun modern" onclick="openModal('Teratai Tribuwana')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Teratai Tribuwana/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Teratai Tribuwana</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
-            <div class="card item-produk katun modern" onclick="openModal('Mayura gurda')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Mayura gurda/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Mayura gurda</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            
+            <!-- PERBAIKAN HURUF KAPITAL -->
+            <div class="card item-produk katun modern" onclick="openModal('Mayura Gurda')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Mayura Gurda/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Mayura Gurda</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <div class="card item-produk katun modern" onclick="openModal('Wana Hijau')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Wana Hijau/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Wana Hijau</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
+            <!-- SELESAI PERBAIKAN -->
+            
             <div class="card item-produk katun modern" onclick="openModal('Mahesa')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Mahesa/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Mahesa</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
             <div class="card item-produk katun modern" onclick="openModal('Sekar Lilac')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Sekar Lilac/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Sekar Lilac</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
             <div class="card item-produk katun modern" onclick="openModal('Karang Abstrak')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Karang Abstrak/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Karang Abstrak</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
@@ -395,7 +399,6 @@
             <div class="card item-produk katun modern" onclick="openModal('Brahma Terakota')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Brahma Terakota/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Brahma Terakota</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
             <div class="card item-produk katun modern" onclick="openModal('Aswara')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Aswara/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Aswara</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
             <div class="card item-produk katun modern" onclick="openModal('Candranala')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Candranala/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Candranala</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
-            <div class="card item-produk katun modern" onclick="openModal('Wana hijau')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Wana hijau/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Wana hijau</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
             <div class="card item-produk katun modern" onclick="openModal('Ananta')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Ananta/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Ananta</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
             <div class="card item-produk katun modern" onclick="openModal('Arimbi Coklat')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Arimbi Coklat/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Arimbi Coklat</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
             <div class="card item-produk katun modern" onclick="openModal('Swastika Hitam')"><span class="badge">Diskon 52%</span><div class="image-container"><img src="Swastika Hitam/mockup.jpg" class="thumb"></div><div class="card-body"><h3 class="card-title">Kemeja Batik Katun Premium Swastika Hitam</h3><div class="price-strike">Rp 420.000</div><div class="price-final">Rp 201.600</div></div></div>
